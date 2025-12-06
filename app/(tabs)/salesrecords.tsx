@@ -4,6 +4,12 @@ import { StyleSheet } from 'react-native'
 import Header from '@/components/header'
 
 export default function salesrecords() {
+
+    const product_list = [
+        { name: 'Ice Blocks', quantity: 80, amount: 50 },
+        { name: 'Ice Cubes', quantity: 5, amount: 50 },
+        { name: 'Ice Chest', quantity: 4, amount: 50 },
+    ];
 	return (
 		<View style={styles.contains}>
             <Header />
@@ -19,16 +25,25 @@ export default function salesrecords() {
             </View>
             <View style={styles.table_header}>
                 <Text style={styles.header_row}>Items Ordered: </Text>
-                <Text style={styles.header_row}>Amount: </Text>
+                <Text style={styles.header_row}>Unit Amount </Text>
+                <Text style={styles.header_row}>Subtotal </Text>
             </View>
             
             <View>
                 <View>
-                    <View style={styles.item_row}>
-                        <Text style={styles.item_list}>Ice Blocks - 5</Text>
-                        <Text style={styles.item_list}>$50</Text>
+                    {product_list.map((product, index) => (
+                        <View key={index} style={styles.item_row}>
+                            <Text style={styles.item_list}>{product.name} x {product.quantity}</Text>
+                            <Text style={styles.item_list}>${product.amount}</Text>
+                            <Text style={styles.item_list}>${product.amount * product.quantity}</Text>
+                        </View>
+                    ))}
+                    <View>
+                        <View style={styles.item_row}>
+                            <Text style={styles.total_list}>Total </Text>
+                            <Text style={styles.total_list}>${product_list.reduce((total, product) => total + (product.amount * product.quantity), 0)}</Text>
+                        </View>
                     </View>
-                    <View></View>
                 </View>
                 
                 
@@ -91,5 +106,9 @@ const styles=StyleSheet.create({
     },
     item_list: {
         fontSize: 18,
+    },
+    total_list: {
+        fontSize: 18,
+        fontWeight: 'bold',
     },
 })
