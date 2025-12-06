@@ -1,44 +1,41 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
-import { StyleSheet } from 'react-native';
-import Header from '@/components/header';
+import { StyleSheet } from 'react-native'
+import Header from '@/components/header'
 
-export default function index() {
-  return (
-    <View style={styles.container}>
-        <Header />
-      <View style={styles.welcomewrapper}>
-        <Text style={styles.welcomeText}>Welcome to The Ice Mill</Text>
-        <Text>Good to see you again.</Text>
-      </View>
-      <View style={styles.bottomwrapper}>
-        <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Get Started</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-  )
+export default function staffprofile() {
+	return (
+		<View style={styles.contains}>
+            <Header />
+			<View style={styles.main}>
+                <Text style={styles.title}>Staff Profile</Text>
+            </View>
+            <View style={styles.bottomwrapper}>
+                <TouchableOpacity style={styles.button}>
+                    <Text style={styles.buttonText}>Log Out</Text>
+                </TouchableOpacity>
+            </View>
+		</View>
+	)
 }
 
-const styles = StyleSheet.create({
-    container: {
+const styles=StyleSheet.create({
+    contains: {
         flex: 1,
-        justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#fff',
-        width: '100%',
-        height: '100%',
     },
-    welcomewrapper: {
+    main: {
         flex: 1,
         width: '100%',
+        paddingHorizontal: 20,
         justifyContent: 'center',
         alignItems: 'center',
     },
-    welcomeText: {
+    title: {
         fontSize: 24,
         fontWeight: 'bold',
-        marginBottom: 10,
+        marginTop: 40,
     },
     button: {
         backgroundColor: '#007AFF',
