@@ -46,11 +46,11 @@ export default function orderform() {
             </View>
       <View style={styles.inputfield}>
         <Text style={styles.label}>Delivery Date</Text>
-        <TextInput style={styles.input} placeholder="Enter Date" />
+        <TextInput style={styles.input} placeholder="dd/mm/yyyy" />
       </View>
       <View style={styles.inputfield}>
         <Text style={styles.label}>Delivery Time</Text>
-        <TextInput style={styles.input} placeholder="Enter Time" />
+        <TextInput style={styles.input} placeholder="hh:mm" />
       </View>
       <View style={styles.inputfield}>
         <Text style={styles.label}>Delivery Venue</Text>
@@ -104,11 +104,11 @@ const styles = StyleSheet.create({
         paddingBottom: 20,
     },
     checkboxitem: {
-        backgroundColor: '#6792f1ff',
         flexDirection: 'row',
         alignItems: 'center',
         gap: 10,
         marginBottom: 15,
+        height: 40,
     },
     input: {
         height: 40,

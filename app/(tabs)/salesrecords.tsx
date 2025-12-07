@@ -6,10 +6,18 @@ import Header from '@/components/header'
 export default function salesrecords() {
 
     const product_list = [
-        { name: 'Ice Blocks', quantity: 80, amount: 50 },
-        { name: 'Ice Cubes', quantity: 5, amount: 50 },
-        { name: 'Ice Chest', quantity: 4, amount: 50 },
+        { name: 'Ice Blocks', quantity: 80, amount: 500 },
+        { name: 'Ice Cubes', quantity: 5, amount: 8000 },
+        { name: 'Ice Chest', quantity: 4, amount: 9000 },
+        { name: 'Logistics', quantity: 1, amount: 20000 },
     ];
+    const formatCurrency = (amount: number) => {
+        try {
+            return new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN' }).format(amount);
+        } catch (e) {
+            return `₦${Number(amount).toLocaleString()}`;
+        }
+    }
 	return (
 		<View style={styles.contains}>
             <Header />
@@ -34,14 +42,14 @@ export default function salesrecords() {
                     {product_list.map((product, index) => (
                         <View key={index} style={styles.item_row}>
                             <Text style={styles.item_list}>{product.name} x {product.quantity}</Text>
-                            <Text style={styles.item_list}>${product.amount}</Text>
-                            <Text style={styles.item_list}>${product.amount * product.quantity}</Text>
+                            <Text style={styles.item_list}>{formatCurrency(product.amount)}</Text>
+                            <Text style={styles.item_list}>{formatCurrency(product.amount * product.quantity)}</Text>
                         </View>
                     ))}
                     <View>
                         <View style={styles.item_row}>
                             <Text style={styles.total_list}>Total </Text>
-                            <Text style={styles.total_list}>${product_list.reduce((total, product) => total + (product.amount * product.quantity), 0)}</Text>
+                            <Text style={styles.total_list}>{formatCurrency(product_list.reduce((total, product) => total + (product.amount * product.quantity), 0))}</Text>
                         </View>
                     </View>
                 </View>
